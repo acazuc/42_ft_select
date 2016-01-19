@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/19 11:45:48 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/01/19 17:00:32 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main()
 	ft_putstr(under_start);
 	ft_putstr("world");
 	ft_putstr(under_end);
-	ft_putstr(tgoto(gotostr, 10, 10));
+	ft_putstr(tgoto(gotostr, 30, 30));
 	ft_putnbr(width);
 	ft_putchar(' ');
 	ft_putnbr(height);
