@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/01/19 11:26:34 by acazuc           ###   ########.fr        #
+#    Updated: 2016/01/20 14:57:29 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,12 @@ INCLUDES_PATH = includes/
 
 SRCS_PATH = srcs/
 
-SRCS_NAME = main.c
+SRCS_NAME = main.c \
+			signal_handler.c \
+			quit.c \
+			terminal_modes.c \
+			init_signals.c \
+			key_codes_init.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

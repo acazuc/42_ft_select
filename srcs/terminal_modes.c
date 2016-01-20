@@ -1,21 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   terminal_modes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/19 11:08:39 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 14:53:48 by acazuc           ###   ########.fr       */
+/*   Created: 2016/01/20 12:06:48 by acazuc            #+#    #+#             */
+/*   Updated: 2016/01/20 15:17:28 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "ft_select.h"
 
-# include "includes.h"
-# include "prototypes.h"
-# include "env.h"
-# include "../libft/includes/libft.h"
+void	terminal_normal_mode(void)
+{
+	struct termios	attr;
 
-#endif
+	tcgetattr(0, &attr);
+	attr.c_lflag |= (ECHO | ICANON);
+	attr.c_oflag |= OPOST;
+	tcsetattr(0, TCSADRAIN, &attr);
+}
+
+void	terminal_catch_mode(void)
+{
+	struct termios	attr;
+
+	tcgetattr(0, &attr);
+	attr.c_lflag &= ~(ECHO | ICANON);
+	attr.c_oflag &= ~OPOST;
+	tcsetattr(0, TCSADRAIN, &attr);
+}

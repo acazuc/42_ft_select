@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   env.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/19 11:08:39 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 14:53:48 by acazuc           ###   ########.fr       */
+/*   Created: 2016/01/20 14:51:31 by acazuc            #+#    #+#             */
+/*   Updated: 2016/01/20 14:54:02 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#ifndef ENV_H
+# define ENV_H
 
-# include "includes.h"
-# include "prototypes.h"
-# include "env.h"
-# include "../libft/includes/libft.h"
+typedef struct		s_env
+{
+	char			*key_code_delete;
+	char			*key_code_left;
+	char			*key_code_up;
+	char			*key_code_right;
+	char			*key_code_down;
+}					t_env;
 
 #endif

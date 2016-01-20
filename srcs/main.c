@@ -6,33 +6,11 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 11:47:23 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/01/20 15:20:23 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
-
-void	raw_terminal_mode()
-{
-	struct termios	tattr;
-
-	tcgetattr(0, &tattr);
-	tattr.c_lflag &= ~(ECHO | ICANON);
-	tattr.c_oflag &= ~(OPOST);
-	tattr.c_cc[VMIN] = 1;
-	tattr.c_cc[VTIME] = 0;
-	tcsetattr(0, TCSADRAIN, &tattr);
-}
-
-void	default_terminal_mode()
-{
-	struct termios	tattr;
-
-	tcgetattr(0, &tattr);
-	tattr.c_lflag |= (ECHO | ICANON);
-	tattr.c_oflag |= (OPOST);
-	tcsetattr(0, TCSADRAIN, &tattr);
-}
 
 int main()
 {/*
@@ -76,39 +54,50 @@ int main()
 	ft_putnbr(height);
 	ft_putendl("!");
 	ft_putstr(grab_start);*/
-	char	buf[1024];
-	char	buf2[30];
-	char	*ap = buf2;
+	t_env	env;
 	int		running;
 	int		rd;
 	char	buffer[20];
 
+	init_signals();
 	running = 1;
-	raw_terminal_mode();
-	tgetent(buf, getenv("TERM"));
-	while (running)
+	terminal_catch_mode();
+	tgetent(0, getenv("TERM"));
+	key_codes_init(&env);
+	int i = 0;
+	while (env.key_code_right[i])
+	{
+		ft_putnbr(env.key_code_right[i]);
+		ft_putchar(' ');
+		i++;
+	}
+	while (42)
 	{
 		ft_memset(buffer, 0, 20);
 		rd = read(0, buffer, 20);
-		if (rd == 1 && buffer[0] == 27)
+		i = 0;
+		while (buffer[i])
 		{
-			default_terminal_mode();
-			exit(1);
+			ft_putnbr(buffer[i]);
+			ft_putchar(' ');
+			i++;
 		}
-		else if (!ft_strcmp(buffer, tgetstr("kD", &ap)))
+		if (rd == 1 && buffer[0] == 27)
+			quit();
+		else if (!ft_strcmp(buffer, env.key_code_delete))
 			ft_putendl("Delete");
 		else if (rd == 1 && buffer[0] == 127)
 			ft_putendl("Back");
-		else if (!ft_strcmp(buffer, tgetstr("kr", &ap)))
+		else if (!ft_strcmp(buffer, env.key_code_right))
 			ft_putendl("Right");
-		else if (!ft_strcmp(buffer, tgetstr("ku", &ap)))
+		else if (!ft_strcmp(buffer, env.key_code_up))
 			ft_putendl("Up");
-		else if (!ft_strcmp(buffer, tgetstr("kd", &ap)))
+		else if (!ft_strcmp(buffer, env.key_code_down))
 			ft_putendl("Down");
-		else if (!ft_strcmp(buffer, tgetstr("kl", &ap)))
+		else if (!ft_strcmp(buffer, env.key_code_left))
 			ft_putendl("Left");
 		else if (!ft_strcmp(buffer, " "))
 			ft_putendl("Space");
 	}
-	default_terminal_mode();
+	terminal_normal_mode();
 }

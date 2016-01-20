@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   key_codes_init.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/19 11:08:39 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 14:53:48 by acazuc           ###   ########.fr       */
+/*   Created: 2016/01/20 14:54:17 by acazuc            #+#    #+#             */
+/*   Updated: 2016/01/20 15:13:40 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#include "ft_select.h"
 
-# include "includes.h"
-# include "prototypes.h"
-# include "env.h"
-# include "../libft/includes/libft.h"
-
-#endif
+void	key_codes_init(t_env *env)
+{
+	if (!(env->key_code_delete = tgetstr("kD", 0)))
+		quit();
+	if (!(env->key_code_left = tgetstr("kl", 0)))
+		quit();
+	if (!(env->key_code_up = tgetstr("ku", 0)))
+		quit();
+	if (!(env->key_code_right = tgetstr("kr", 0)))
+		quit();
+	if (!(env->key_code_down = tgetstr("kd", 0)))
+		quit();
+}
