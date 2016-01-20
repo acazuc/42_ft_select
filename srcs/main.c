@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 08:31:54 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/01/20 11:47:23 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	default_terminal_mode()
 }
 
 int main()
-{
-	/*char buf[1024];
+{/*
+	char buf[1024];
 	char buf2[30];
 	char *ap = buf2;
 	int		width;
@@ -75,12 +75,12 @@ int main()
 	ft_putchar(' ');
 	ft_putnbr(height);
 	ft_putendl("!");
-	sleep(1);
 	ft_putstr(grab_start);*/
 	char	buf[1024];
 	char	buf2[30];
 	char	*ap = buf2;
 	int		running;
+	int		rd;
 	char	buffer[20];
 
 	running = 1;
@@ -89,26 +89,26 @@ int main()
 	while (running)
 	{
 		ft_memset(buffer, 0, 20);
-		read(0, buffer, 20);
-		if (!ft_strcmp(buffer, tgetstr("kr", &ap)))
-			ft_putendl("EUREKA !");
-		ft_putstr(buffer);
-		ft_putchar('\n');
-		int i = 0;
-		while (i < 20)
+		rd = read(0, buffer, 20);
+		if (rd == 1 && buffer[0] == 27)
 		{
-			ft_putnbr(buffer[i]);
-			ft_putchar(' ');
-			i++;
+			default_terminal_mode();
+			exit(1);
 		}
-		i = 0;
-		while (tgetstr("kr", &ap)[i])
-		{
-			ft_putnbr(tgetstr("kr", &ap)[i]);
-			ft_putchar(' ');
-			i++;
-		}
-		running = 0;
+		else if (!ft_strcmp(buffer, tgetstr("kD", &ap)))
+			ft_putendl("Delete");
+		else if (rd == 1 && buffer[0] == 127)
+			ft_putendl("Back");
+		else if (!ft_strcmp(buffer, tgetstr("kr", &ap)))
+			ft_putendl("Right");
+		else if (!ft_strcmp(buffer, tgetstr("ku", &ap)))
+			ft_putendl("Up");
+		else if (!ft_strcmp(buffer, tgetstr("kd", &ap)))
+			ft_putendl("Down");
+		else if (!ft_strcmp(buffer, tgetstr("kl", &ap)))
+			ft_putendl("Left");
+		else if (!ft_strcmp(buffer, " "))
+			ft_putendl("Space");
 	}
 	default_terminal_mode();
 }
