@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_codes_init.c                                   :+:      :+:    :+:   */
+/*   caps.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/20 14:54:17 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 16:33:08 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/13 15:36:16 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/13 16:02:36 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_select.h"
+#ifndef CAPS_H
+# define CAPS_H
 
-void	key_codes_init(t_env *env)
+typedef struct	s_caps
 {
-	if (!(env->key_code_delete = tgetstr("kD", 0)))
-		error_quit(NULL);
-	if (!(env->key_code_left = tgetstr("kl", 0)))
-		error_quit(NULL);
-	env->key_code_left[1] = 91;
-	if (!(env->key_code_right = tgetstr("kr", 0)))
-		error_quit(NULL);
-	env->key_code_right[1] = 91;
-}
+	char		*fullscreen_start;
+	char		*fullscreen_end;
+	char		*underline_start;
+	char		*underline_end;
+	char		*highlight_start;
+	char		*highlight_end;
+	char		*bold_start;
+	char		*bold_end;
+	char		*clear;
+	char		*move;
+}				t_caps;
+
+#endif

@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   quit.c                                             :+:      :+:    :+:   */
+/*   read_stdin.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/20 12:05:23 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 12:14:18 by acazuc           ###   ########.fr       */
+/*   Created: 2016/02/13 15:53:45 by acazuc            #+#    #+#             */
+/*   Updated: 2016/02/13 15:57:13 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-void	quit(void)
+void	read_stdin(t_env *env)
 {
-	terminal_normal_mode();
-	exit(1);
+	char	buffer[20];
+
+	ft_memset(buffer, 0, 20);
+	rd = reead(0, buffer, 20);
+	i = 0;
+	while (buffer[i])
+	{
+		ft_putnbr(buffer[i]);
+		ft_putchar(' ');
+		i++;
+	}
+	ft_putchar('\n');
+	if (rd == 1 && buffer[0] == 27)
+		error_quit(NULL);
 }

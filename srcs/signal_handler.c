@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 12:02:40 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 12:14:08 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 16:00:28 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void	signal_handler(int signal)
 {
-	if (signal == SIGINT || signal == SIGKILL || signal == SIGSEGV
-			|| signal == SIGFPE || signal == SIGBUS)
-		quit();
+	if (signal == SIGINT)
+ 	   error_quit("SIGINT");
+	else if (signal == SIGKILL)
+ 	   error_quit("SIGKILL");
+	else if (signal == SIGSEGV)
+		error_quit("SIGSEGV");
+	else if (signal == SIGFPE)
+		error_quit("SIGFPE");
+	else if (signal == SIGBUS)
+		error_quit("SIGBUS");
 }
