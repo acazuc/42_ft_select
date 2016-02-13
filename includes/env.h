@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 14:51:31 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 16:32:57 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 16:47:11 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@ typedef struct		s_env
 	char			*key_code_delete;
 	char			*key_code_left;
 	char			*key_code_right;
+	int				list_size;
+	int				position;
+	char			**list;
 }					t_env;
 
 #endif

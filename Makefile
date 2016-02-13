@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/02/13 16:19:35 by acazuc           ###   ########.fr        #
+#    Updated: 2016/02/13 16:46:52 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS_NAME = main.c \
 			init_signals.c \
 			key_codes_init.c \
 			init_caps.c \
+			draw_list.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

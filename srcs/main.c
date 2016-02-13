@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 16:32:47 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/02/13 16:46:40 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,19 @@ static void		read_stdin(t_env *env)
 	else if (rd == 1 && buffer[0] == ' ')
 		ft_putendl("space");
 	else if (!ft_strcmp(buffer, env->key_code_right))
-		ft_putendl("right");
+	{
+		if (env->position == env->list_size - 1)
+			env->position = 0;
+		else
+			env->position++;
+	}
 	else if (!ft_strcmp(buffer, env->key_code_left))
-		ft_putendl("left");
+	{
+		if (env->position == 0)
+			env->position = env->list_size - 1;
+		else
+			env->position--;
+	}
 	draw_list(env);
 }
 
@@ -126,6 +136,9 @@ int				main(int ac, char **av)
 
 	if (!(env = malloc(sizeof(*env))))
 		error_quit("Failed to malloc env");
+	env->position = 0;
+	env->list_size = ac;
+	env->list = av;
 	init_signals();
 	tgetent(0, getenv("TERM"));
 	if (!(env->caps = malloc(sizeof(*env->caps))))
