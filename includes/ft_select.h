@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 11:08:39 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 10:25:49 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 10:58:03 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include "env.h"
 # include "../libft/includes/libft.h"
 # include "caps.h"
-# include "list_item.h"
+# include "item_list.h"
 
 #endif

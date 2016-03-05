@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list_item.h                                        :+:      :+:    :+:   */
+/*   move_down.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/05 10:22:27 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 10:25:29 by acazuc           ###   ########.fr       */
+/*   Created: 2016/03/05 11:37:55 by acazuc            #+#    #+#             */
+/*   Updated: 2016/03/05 11:38:30 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIST_ITEM_H
-# define LIST_ITEM_H
+#include "ft_select.h"
 
-# include "list.h"
-
-typedef struct s_list_item	t_list_item;
-
-struct				s_list_item
+void	move_down(t_env *env)
 {
-	t_item			*item;
-	t_list_item		*next;
-};
-
-#endif
+	if (env->curr)
+	{
+		if (env->curr->next)
+			env->curr = env->curr->next;
+		else
+			env->curr = env->items;
+	}
+}

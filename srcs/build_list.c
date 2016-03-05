@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   build_list.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/20 14:51:31 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 11:28:16 by acazuc           ###   ########.fr       */
+/*   Created: 2016/03/05 11:10:40 by acazuc            #+#    #+#             */
+/*   Updated: 2016/03/05 11:17:10 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#include "ft_select.h"
 
-# include "item_list.h"
-# include "caps.h"
-
-typedef struct		s_env
+void	build_list(t_env *env, int ac, char **av)
 {
-	t_item_list		*items;
-	t_item_list		*curr;
-	t_caps			*caps;
-	char			*key_code_delete;
-	char			*key_code_left;
-	char			*key_code_right;
-	char			*key_code_up;
-	char			*key_code_down;
-	int				list_size;
-}					t_env;
+	t_item		*new;
+	int			i;
 
-#endif
+	i = 1;
+	while (i < ac)
+	{
+		new = item_create();
+		new->name = av[i];
+		list_push(env, new);
+		i++;
+	}
+}

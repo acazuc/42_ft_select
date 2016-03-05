@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   env.h                                              :+:      :+:    :+:   */
+/*   move_up.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/20 14:51:31 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 11:28:16 by acazuc           ###   ########.fr       */
+/*   Created: 2016/03/05 11:39:25 by acazuc            #+#    #+#             */
+/*   Updated: 2016/03/05 11:41:54 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENV_H
-# define ENV_H
+#include "ft_select.h"
 
-# include "item_list.h"
-# include "caps.h"
-
-typedef struct		s_env
+void	move_up(t_env *env)
 {
-	t_item_list		*items;
-	t_item_list		*curr;
-	t_caps			*caps;
-	char			*key_code_delete;
-	char			*key_code_left;
-	char			*key_code_right;
-	char			*key_code_up;
-	char			*key_code_down;
-	int				list_size;
-}					t_env;
+	t_item_list		*lst;
 
-#endif
+	if (env->curr)
+	{
+		lst = env->items;
+		while (lst && lst != (void*)1)
+		{
+			if (lst->next == env->curr)
+			{
+				env->curr = lst;
+				lst = (void*)1;
+			}
+			if (lst != (void*)1)
+				lst = lst->next;
+		}
+		if (lst != (void*)1 && env->items)
+		{
+			lst = env->items;
+			while (lst->next)
+				lst = lst->next;
+			env->curr = lst;
+		}
+	}
+}
