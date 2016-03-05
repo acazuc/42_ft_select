@@ -6,11 +6,13 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 17:12:16 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 17:59:32 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
+
+t_env		*g_env = NULL;
 
 static void		read_stdin(t_env *env)
 {
@@ -45,6 +47,9 @@ int				main(int ac, char **av)
 {
 	t_env	env;
 
+	g_env = &env;
+	env.old_width = 0;
+	env.old_height = 0;
 	env.list_size = ac - 1;
 	env.items = NULL;
 	build_list(&env, ac, av);

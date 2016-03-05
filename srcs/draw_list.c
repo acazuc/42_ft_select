@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 16:33:50 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 17:08:47 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 17:50:37 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,13 @@ void			draw_list(t_env *env)
 	int				x;
 	int				y;
 
+	if (env->old_width != tgetnum("co")
+			|| env->old_height != tgetnum("li"))
+	{
+		ft_putstr(tgetstr("cl", 0));
+		env->old_width = tgetnum("co");
+		env->old_height = tgetnum("li");
+	}
 	x = 0;
 	y = 0;
 	max_width = 0;
