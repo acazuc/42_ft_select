@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 16:33:50 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 17:50:37 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 18:54:50 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,8 @@ static void		check_column(int *x, int *y, size_t *max_width)
 	}
 }
 
-void			draw_list(t_env *env)
+static void		check_resize(t_env *env)
 {
-	t_item_list		*lst;
-	size_t			max_width;
-	int				x;
-	int				y;
-
 	if (env->old_width != tgetnum("co")
 			|| env->old_height != tgetnum("li"))
 	{
@@ -72,6 +67,16 @@ void			draw_list(t_env *env)
 		env->old_width = tgetnum("co");
 		env->old_height = tgetnum("li");
 	}
+}
+
+void			draw_list(t_env *env)
+{
+	t_item_list		*lst;
+	size_t			max_width;
+	int				x;
+	int				y;
+
+	check_resize(env);
 	x = 0;
 	y = 0;
 	max_width = 0;
