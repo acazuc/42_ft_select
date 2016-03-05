@@ -1,23 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_select.h                                        :+:      :+:    :+:   */
+/*   item.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/19 11:08:39 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 10:25:49 by acazuc           ###   ########.fr       */
+/*   Created: 2016/03/05 10:23:49 by acazuc            #+#    #+#             */
+/*   Updated: 2016/03/05 10:25:20 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SELECT_H
-# define FT_SELECT_H
+#ifndef ITEM_H
+# define ITEM_H
 
-# include "includes.h"
-# include "prototypes.h"
-# include "env.h"
-# include "../libft/includes/libft.h"
-# include "caps.h"
-# include "list_item.h"
+typedef struct		s_item
+{
+	char			*name;
+	int				selected;
+}					t_item;
 
 #endif
