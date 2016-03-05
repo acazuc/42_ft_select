@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/13 16:33:50 by acazuc            #+#    #+#             */
-/*   Updated: 2016/02/13 16:50:51 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 10:21:03 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ void	draw_list(t_env *env)
 		ft_putstr(env->list[i]);
 		if (i == env->position)
 			ft_putstr(env->caps->underline_end);
-		ft_putchar(' ');
+		if (i != env->list_size - 1)
+			ft_putchar(' ');
 		x += ft_strlen(env->list[i]) + 1;
 		i++;
 	}
