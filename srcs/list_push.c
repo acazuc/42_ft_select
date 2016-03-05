@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 11:13:47 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 11:22:46 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 13:09:25 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@ void	list_push(t_env *env, t_item *item)
 	new->item = item;
 	new->next = NULL;
 	if (!env->items)
+	{
+		new->prev = NULL;
 		env->items = new;
+	}
 	else
 	{
 		lst = env->items;
 		while (lst->next)
 			lst = lst->next;
+		new->prev = lst;
 		lst->next = new;
 	}
 }

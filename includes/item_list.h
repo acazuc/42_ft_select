@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 10:22:27 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 10:57:53 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 13:06:45 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ struct				s_item_list
 {
 	t_item			*item;
 	t_item_list		*next;
+	t_item_list		*prev;
 };
 
 #endif

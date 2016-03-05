@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 12:04:42 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 11:44:12 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 16:44:18 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,10 @@ void	move_down(t_env *env);
 void	move_up(t_env *env);
 void	move_left(t_env *env);
 void	move_right(t_env *env);
+void	return_selected(t_env *env);
+void	terminal_catch(void);
+void	terminal_default(void);
+void	delete_current(t_env *env);
+void	free_item_list(t_item_list *list);
 
 #endif

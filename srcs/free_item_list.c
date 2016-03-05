@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   item_create.c                                      :+:      :+:    :+:   */
+/*   free_item_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/05 11:12:40 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 13:06:34 by acazuc           ###   ########.fr       */
+/*   Created: 2016/03/05 16:44:22 by acazuc            #+#    #+#             */
+/*   Updated: 2016/03/05 16:46:06 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-t_item	*item_create(void)
+void	free_item_list(t_item_list *list)
 {
-	t_item	*new;
-
-	if (!(new = malloc(sizeof(*new))))
-		error_quit("Failed to create new list item");
-	new->selected = 0;
-	return (new);
+	free(list->item);
+	free(list);
 }

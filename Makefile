@@ -6,7 +6,7 @@
 #    By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/25 06:50:12 by acazuc            #+#    #+#              #
-#    Updated: 2016/03/05 11:44:39 by acazuc           ###   ########.fr        #
+#    Updated: 2016/03/05 16:45:14 by acazuc           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,11 @@ SRCS_NAME = main.c \
 			move_up.c \
 			move_left.c \
 			move_right.c \
+			return_selected.c \
+			terminal_catch.c \
+			terminal_default.c \
+			delete_current.c \
+			free_item_list.c \
 
 SRCS = $(addprefix $(SRCS_PATH), $(SRCS_NAME))
 

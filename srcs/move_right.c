@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/05 11:45:08 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 11:48:16 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 13:12:40 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	move_right(t_env *env)
 			env->curr = lst;
 			return ;
 		}
+		i++;
 		lst = lst->next;
 	}
 }

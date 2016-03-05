@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 14:47:32 by acazuc            #+#    #+#             */
-/*   Updated: 2016/01/20 14:49:02 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 14:39:03 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,7 @@ void	init_signals(void)
 	signal(SIGSEGV, signal_handler);
 	signal(SIGFPE, signal_handler);
 	signal(SIGBUS, signal_handler);
+	signal(SIGSTOP, signal_handler);
+	signal(SIGTSTP, signal_handler);
+	signal(SIGCONT, signal_handler);
 }

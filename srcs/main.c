@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 11:47:34 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 16:52:17 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,11 @@ static void		read_stdin(t_env *env)
 	rd = read(0, buffer, 20);
 	if (rd == 1 && buffer[0] == 27)
 		error_quit(NULL);
+	else if (rd == 1 && buffer[0] == 10)
+		return_selected(env);
+	else if ((rd == 1 && buffer[0] == 127)
+			|| !ft_strcmp(buffer, env->key_code_delete))
+		delete_current(env);
 	else if (rd == 1 && buffer[0] == ' ')
 	{
 		if (env->curr)
@@ -44,14 +49,13 @@ int				main(int ac, char **av)
 	env.items = NULL;
 	build_list(&env, ac, av);
 	env.curr = env.items;
-	//init_signals();
+	init_signals();
 	tgetent(0, getenv("TERM"));
 	if (!(env.caps = malloc(sizeof(*env.caps))))
 		error_quit("Failed to malloc env caps");
 	init_caps(env.caps);
 	key_codes_init(&env);
-	terminal_catch_mode();
-	ft_putendl(env.caps->fullscreen_start);
+	terminal_catch();
 	while (1)
 	{
 		draw_list(&env);

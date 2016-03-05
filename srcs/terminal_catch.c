@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   item_create.c                                      :+:      :+:    :+:   */
+/*   terminal_catch.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/05 11:12:40 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 13:06:34 by acazuc           ###   ########.fr       */
+/*   Created: 2016/03/05 13:29:19 by acazuc            #+#    #+#             */
+/*   Updated: 2016/03/05 16:16:42 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_select.h"
 
-t_item	*item_create(void)
+void	terminal_catch(void)
 {
-	t_item	*new;
-
-	if (!(new = malloc(sizeof(*new))))
-		error_quit("Failed to create new list item");
-	new->selected = 0;
-	return (new);
+	ft_putstr(tgetstr("ti", 0));
+	ft_putstr(tgetstr("vi", 0));
+	ft_putstr(tgetstr("cl", 0));
+	terminal_catch_mode();
 }
