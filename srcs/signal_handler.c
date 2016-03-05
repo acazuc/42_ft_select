@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 12:02:40 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 18:11:20 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/03/05 18:31:08 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,27 @@
 #include <sys/ioctl.h>
 
 t_env	*g_env;
+
+static void	sigtstp(void)
+{
+	signal(SIGTSTP, SIG_DFL);
+	ioctl(0, TIOCSTI, "\032");
+	terminal_default();
+}
+
+static void	sigcont(void)
+{
+	terminal_catch();
+	signal(SIGTSTP, signal_handler);
+	tgetent(0, getenv("TERM"));
+	draw_list(g_env);
+}
+
+static void	sigwinch(void)
+{
+	tgetent(0, getenv("TERM"));
+	draw_list(g_env);
+}
 
 void		signal_handler(int sig)
 {
@@ -28,21 +49,9 @@ void		signal_handler(int sig)
 	else if (sig == SIGBUS)
 		error_quit(NULL);
 	else if (sig == SIGSTOP || sig == SIGTSTP)
-	{
-		signal(SIGTSTP, SIG_DFL);
-		ioctl(0, TIOCSTI, "\032");
-		terminal_default();
-	}
+		sigtstp();
 	else if (sig == SIGCONT)
-	{
-		signal(SIGTSTP, signal_handler);
-		terminal_catch();
-		tgetent(0, getenv("TERM"));
-		draw_list(g_env);
-	}
+		sigcont();
 	else if (sig == SIGWINCH)
-	{
-		tgetent(0, getenv("TERM"));
-		draw_list(g_env);
-	}
+		sigwinch();
 }
