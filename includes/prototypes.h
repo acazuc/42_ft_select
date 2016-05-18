@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 12:04:42 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 17:08:57 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/18 09:50:10 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ void	terminal_catch(void);
 void	terminal_default(void);
 void	delete_current(t_env *env);
 void	free_item_list(t_item_list *list);
+void	get_tty_fd(t_env *env);
 
 #endif

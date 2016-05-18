@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/06 12:56:50 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/18 09:56:07 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int				main(int ac, char **av)
 	env.old_height = 0;
 	env.list_size = ac - 1;
 	env.items = NULL;
+	get_tty_fd(&env);
 	build_list(&env, ac, av);
 	env.curr = env.items;
 	init_signals();

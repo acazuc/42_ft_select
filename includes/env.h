@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/20 14:51:31 by acazuc            #+#    #+#             */
-/*   Updated: 2016/03/05 17:45:04 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/05/18 09:45:40 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct		s_env
 	int				old_width;
 	int				old_height;
 	int				list_size;
+	int				fd;
 }					t_env;
 
 #endif
