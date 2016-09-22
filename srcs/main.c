@@ -6,7 +6,7 @@
 /*   By: acazuc <acazuc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 10:54:10 by acazuc            #+#    #+#             */
-/*   Updated: 2016/05/18 09:56:07 by acazuc           ###   ########.fr       */
+/*   Updated: 2016/09/22 20:39:56 by acazuc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int				main(int ac, char **av)
 {
 	t_env	env;
 
+	if (!(isatty(0)))
+		error_quit("Invalid stdin, please run from terminal");
 	g_env = &env;
 	env.old_width = 0;
 	env.old_height = 0;
@@ -62,6 +64,7 @@ int				main(int ac, char **av)
 	init_caps(env.caps);
 	key_codes_init(&env);
 	terminal_catch();
+	env.fd = 2;
 	while (1)
 	{
 		draw_list(&env);
